@@ -1,0 +1,26 @@
+-- Question 12
+
+SELECT DISTINCT c1.name as first_country, c2.name as second_country, mountains, seas
+FROM hw5index.country c1, hw5index.country c2
+     LET mountains = (SELECT DISTINCT m2.name
+        FROM hw5index.mountain m2, split(m2.`-country`, " ") M2_1, split(m2.`-country`, " ") M2_2
+        WHERE  M2_1 = c1.`-car_code` and M2_2 = c2.`-car_code`
+        ),
+     seas = (SELECT DISTINCT s2.name
+        FROM hw5index.sea s2, split(s2.`-country`, " ") S2_1, split(s2.`-country`, " ") S2_2
+        WHERE  S2_1 = c1.`-car_code` and S2_2 = c2.`-car_code`
+        )
+WHERE ARRAY_COUNT(mountains)>=1
+AND ARRAY_COUNT(seas) >=1
+AND c1.`-car_code` < c2.`-car_code`;
+
+/*
+response
+{ "mountains": [ { "name": "Sulitjelma" } ], "seas": [ { "name": "Skagerrak" } ], "first_country": "Norway", "second_country": "Sweden" }
+{ "mountains": [ { "name": "Vignemale" } ], "seas": [ { "name": "Atlantic Ocean" }, { "name": "Mediterranean Sea" } ], "first_country": "Spain", "second_country": "France" }
+{ "mountains": [ { "name": "Mt Bona" }, { "name": "Mt St.Elias" }, { "name": "Mt Fairweather" } ], "seas": [ { "name": "Arctic Ocean" }, { "name": "Pacific Ocean" }, { "name": "Atlantic Ocean" } ], "first_country": "Canada", "second_country": "United States" }
+{ "mountains": [ { "name": "Kasbek" } ], "seas": [ { "name": "Black Sea" } ], "first_country": "Georgia", "second_country": "Russia" }
+{ "mountains": [ { "name": "Mont Blanc" } ], "seas": [ { "name": "Mediterranean Sea" } ], "first_country": "France", "second_country": "Italy" }
+{ "mountains": [ { "name": "Changbai Shan" } ], "seas": [ { "name": "Yellow Sea" } ], "first_country": "North Korea", "second_country": "China" }
+{ "mountains": [ { "name": "Llullaillaco" }, { "name": "Ojos del Salado" } ], "seas": [ { "name": "Atlantic Ocean" } ], "first_country": "Argentina", "second_country": "Chile" }
+*/

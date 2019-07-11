@@ -1,0 +1,56 @@
+-- Question 8
+
+SELECT   c.`-car_code` as country_code,  c.name as country_name, c.`-area` as area
+FROM hw5.world x,  x.mondial.country c
+LET seas =  (select s.name as sea  FROM x.mondial.sea  s, split(s.`-country`, " ") ss WHERE c.`-car_code` = ss)
+WHERE ARRAY_COUNT(seas) = 0
+ORDER BY float(c.`-area`) DESC;
+
+/*
+response
+{ "country_code": "KAZ", "country_name": "Kazakstan", "area": "2717300" }
+{ "country_code": "MNG", "country_name": "Mongolia", "area": "1565000" }
+{ "country_code": "TCH", "country_name": "Chad", "area": "1284000" }
+{ "country_code": "RN", "country_name": "Niger", "area": "1267000" }
+{ "country_code": "RMM", "country_name": "Mali", "area": "1240000" }
+{ "country_code": "ETH", "country_name": "Ethiopia", "area": "1127127" }
+{ "country_code": "BOL", "country_name": "Bolivia", "area": "1098580" }
+{ "country_code": "Z", "country_name": "Zambia", "area": "752610" }
+{ "country_code": "AFG", "country_name": "Afghanistan", "area": "647500" }
+{ "country_code": "RCA", "country_name": "Central African Republic", "area": "622980" }
+{ "country_code": "RB", "country_name": "Botswana", "area": "600370" }
+{ "country_code": "TM", "country_name": "Turkmenistan", "area": "488100" }
+{ "country_code": "UZB", "country_name": "Uzbekistan", "area": "447400" }
+{ "country_code": "PY", "country_name": "Paraguay", "area": "406750" }
+{ "country_code": "ZW", "country_name": "Zimbabwe", "area": "390580" }
+{ "country_code": "BF", "country_name": "Burkina Faso", "area": "274200" }
+{ "country_code": "LAO", "country_name": "Laos", "area": "236800" }
+{ "country_code": "EAU", "country_name": "Uganda", "area": "236040" }
+{ "country_code": "BY", "country_name": "Belarus", "area": "207600" }
+{ "country_code": "KGZ", "country_name": "Kyrgyzstan", "area": "198500" }
+{ "country_code": "TAD", "country_name": "Tajikistan", "area": "143100" }
+{ "country_code": "NEP", "country_name": "Nepal", "area": "140800" }
+{ "country_code": "MW", "country_name": "Malawi", "area": "118480" }
+{ "country_code": "H", "country_name": "Hungary", "area": "93030" }
+{ "country_code": "AZ", "country_name": "Azerbaijan", "area": "86600" }
+{ "country_code": "A", "country_name": "Austria", "area": "83850" }
+{ "country_code": "CZ", "country_name": "Czech Republic", "area": "78703" }
+{ "country_code": "SRB", "country_name": "Serbia", "area": "77474" }
+{ "country_code": "SK", "country_name": "Slovakia", "area": "48845" }
+{ "country_code": "BHT", "country_name": "Bhutan", "area": "47000" }
+{ "country_code": "CH", "country_name": "Switzerland", "area": "41290" }
+{ "country_code": "MD", "country_name": "Moldova", "area": "33700" }
+{ "country_code": "LS", "country_name": "Lesotho", "area": "30350" }
+{ "country_code": "ARM", "country_name": "Armenia", "area": "29800" }
+{ "country_code": "BI", "country_name": "Burundi", "area": "27830" }
+{ "country_code": "RWA", "country_name": "Rwanda", "area": "26340" }
+{ "country_code": "MK", "country_name": "Macedonia", "area": "25333" }
+{ "country_code": "SD", "country_name": "Swaziland", "area": "17360" }
+{ "country_code": "KOS", "country_name": "Kosovo", "area": "10887" }
+{ "country_code": "WEST", "country_name": "West Bank", "area": "5860" }
+{ "country_code": "L", "country_name": "Luxembourg", "area": "2586" }
+{ "country_code": "AND", "country_name": "Andorra", "area": "450" }
+{ "country_code": "FL", "country_name": "Liechtenstein", "area": "160" }
+{ "country_code": "RSM", "country_name": "San Marino", "area": "60" }
+{ "country_code": "V", "country_name": "Holy See", "area": "0.44" }
+*/

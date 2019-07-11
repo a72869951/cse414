@@ -1,0 +1,250 @@
+-- Question 2
+
+SELECT c.name as country, c.population,Array_count(religion) as num_religions
+FROM hw5.world x,  x.mondial.country c
+    LET religion = CASE  WHEN c.religions is missing THEN []
+                   WHEN is_array(c.religions) THEN c.religions
+                   ELSE [c.religions] END 
+ORDER BY c.name;
+
+/*
+response
+{ "num_religions": 1, "country": "Afghanistan", "population": "22664136" }
+{ "num_religions": 3, "country": "Albania", "population": "3249136" }
+{ "num_religions": 3, "country": "Algeria", "population": "29183032" }
+{ "num_religions": 3, "country": "American Samoa", "population": "65628" }
+{ "num_religions": 1, "country": "Andorra", "population": "72766" }
+{ "num_religions": 2, "country": "Angola", "population": "10342899" }
+{ "num_religions": 4, "country": "Anguilla", "population": "14436" }
+{ "num_religions": 0, "country": "Antigua and Barbuda", "population": "65647" }
+{ "num_religions": 3, "country": "Argentina", "population": "34672997" }
+{ "num_religions": 1, "country": "Armenia", "population": "3463574" }
+{ "num_religions": 2, "country": "Aruba", "population": "103065" }
+{ "num_religions": 3, "country": "Australia", "population": "18260863" }
+{ "num_religions": 2, "country": "Austria", "population": "8023244" }
+{ "num_religions": 2, "country": "Azerbaijan", "population": "7676953" }
+{ "num_religions": 6, "country": "Bahamas", "population": "259367" }
+{ "num_religions": 1, "country": "Bahrain", "population": "590042" }
+{ "num_religions": 2, "country": "Bangladesh", "population": "123062800" }
+{ "num_religions": 2, "country": "Barbados", "population": "257030" }
+{ "num_religions": 1, "country": "Belarus", "population": "10415973" }
+{ "num_religions": 2, "country": "Belgium", "population": "10170241" }
+{ "num_religions": 2, "country": "Belize", "population": "219296" }
+{ "num_religions": 2, "country": "Benin", "population": "5709529" }
+{ "num_religions": 5, "country": "Bermuda", "population": "67837" }
+{ "num_religions": 2, "country": "Bhutan", "population": "1822625" }
+{ "num_religions": 1, "country": "Bolivia", "population": "7165257" }
+{ "num_religions": 4, "country": "Bosnia and Herzegovina", "population": "2656240" }
+{ "num_religions": 1, "country": "Botswana", "population": "1477630" }
+{ "num_religions": 1, "country": "Brazil", "population": "162661214" }
+{ "num_religions": 2, "country": "British Virgin Islands", "population": "24491" }
+{ "num_religions": 3, "country": "Brunei", "population": "299939" }
+{ "num_religions": 4, "country": "Bulgaria", "population": "8612757" }
+{ "num_religions": 2, "country": "Burkina Faso", "population": "10623323" }
+{ "num_religions": 2, "country": "Burundi", "population": "5943057" }
+{ "num_religions": 1, "country": "Cambodia", "population": "10861218" }
+{ "num_religions": 2, "country": "Cameroon", "population": "14261557" }
+{ "num_religions": 3, "country": "Canada", "population": "28820671" }
+{ "num_religions": 1, "country": "Cape Verde", "population": "449066" }
+{ "num_religions": 4, "country": "Cayman Islands", "population": "49035" }
+{ "num_religions": 3, "country": "Central African Republic", "population": "3274426" }
+{ "num_religions": 2, "country": "Chad", "population": "6976845" }
+{ "num_religions": 2, "country": "Chile", "population": "14333258" }
+{ "num_religions": 2, "country": "China", "population": "1210004956" }
+{ "num_religions": 3, "country": "Christmas Island", "population": "1402" }
+{ "num_religions": 2, "country": "Cocos Islands", "population": "596" }
+{ "num_religions": 1, "country": "Colombia", "population": "36813161" }
+{ "num_religions": 2, "country": "Comoros", "population": "569237" }
+{ "num_religions": 2, "country": "Congo", "population": "2527841" }
+{ "num_religions": 1, "country": "Cook Islands", "population": "11870" }
+{ "num_religions": 1, "country": "Costa Rica", "population": "3463083" }
+{ "num_religions": 2, "country": "Cote dIvoire", "population": "14762445" }
+{ "num_religions": 4, "country": "Croatia", "population": "5004112" }
+{ "num_religions": 1, "country": "Cuba", "population": "10951334" }
+{ "num_religions": 2, "country": "Cyprus", "population": "744609" }
+{ "num_religions": 3, "country": "Czech Republic", "population": "10321120" }
+{ "num_religions": 2, "country": "Denmark", "population": "5249632" }
+{ "num_religions": 2, "country": "Djibouti", "population": "427642" }
+{ "num_religions": 2, "country": "Dominica", "population": "82926" }
+{ "num_religions": 1, "country": "Dominican Republic", "population": "8088881" }
+{ "num_religions": 1, "country": "Ecuador", "population": "11466291" }
+{ "num_religions": 2, "country": "Egypt", "population": "63575107" }
+{ "num_religions": 1, "country": "El Salvador", "population": "5828987" }
+{ "num_religions": 1, "country": "Equatorial Guinea", "population": "431282" }
+{ "num_religions": 0, "country": "Eritrea", "population": "3427883" }
+{ "num_religions": 0, "country": "Estonia", "population": "1459428" }
+{ "num_religions": 2, "country": "Ethiopia", "population": "57171662" }
+{ "num_religions": 0, "country": "Falkland Islands", "population": "3140" }
+{ "num_religions": 1, "country": "Faroe Islands", "population": "43857" }
+{ "num_religions": 3, "country": "Fiji", "population": "782381" }
+{ "num_religions": 2, "country": "Finland", "population": "5105230" }
+{ "num_religions": 4, "country": "France", "population": "58317450" }
+{ "num_religions": 1, "country": "French Guiana", "population": "151187" }
+{ "num_religions": 2, "country": "French Polynesia", "population": "287032" }
+{ "num_religions": 2, "country": "Gabon", "population": "1172798" }
+{ "num_religions": 2, "country": "Gambia", "population": "1204984" }
+{ "num_religions": 3, "country": "Gaza Strip", "population": "813332" }
+{ "num_religions": 3, "country": "Georgia", "population": "5219810" }
+{ "num_religions": 2, "country": "Germany", "population": "83536115" }
+{ "num_religions": 2, "country": "Ghana", "population": "17698271" }
+{ "num_religions": 4, "country": "Gibraltar", "population": "28765" }
+{ "num_religions": 2, "country": "Greece", "population": "10538594" }
+{ "num_religions": 1, "country": "Greenland", "population": "58203" }
+{ "num_religions": 0, "country": "Grenada", "population": "94961" }
+{ "num_religions": 3, "country": "Guadeloupe", "population": "407768" }
+{ "num_religions": 1, "country": "Guam", "population": "178430" }
+{ "num_religions": 0, "country": "Guatemala", "population": "11277614" }
+{ "num_religions": 0, "country": "Guernsey", "population": "62920" }
+{ "num_religions": 2, "country": "Guinea", "population": "7411981" }
+{ "num_religions": 2, "country": "Guinea-Bissau", "population": "1151330" }
+{ "num_religions": 3, "country": "Guyana", "population": "712091" }
+{ "num_religions": 2, "country": "Haiti", "population": "6731539" }
+{ "num_religions": 1, "country": "Holy See", "population": "840" }
+{ "num_religions": 1, "country": "Honduras", "population": "5605193" }
+{ "num_religions": 1, "country": "Hong Kong", "population": "7055071" }
+{ "num_religions": 2, "country": "Hungary", "population": "10002541" }
+{ "num_religions": 2, "country": "Iceland", "population": "270292" }
+{ "num_religions": 6, "country": "India", "population": "952107694" }
+{ "num_religions": 5, "country": "Indonesia", "population": "206611600" }
+{ "num_religions": 2, "country": "Iran", "population": "66094264" }
+{ "num_religions": 2, "country": "Iraq", "population": "21422292" }
+{ "num_religions": 2, "country": "Ireland", "population": "3566833" }
+{ "num_religions": 4, "country": "Israel", "population": "5421995" }
+{ "num_religions": 1, "country": "Italy", "population": "57460274" }
+{ "num_religions": 2, "country": "Jamaica", "population": "2595275" }
+{ "num_religions": 1, "country": "Japan", "population": "125449703" }
+{ "num_religions": 0, "country": "Jersey", "population": "87848" }
+{ "num_religions": 2, "country": "Jordan", "population": "4212152" }
+{ "num_religions": 3, "country": "Kazakstan", "population": "16916463" }
+{ "num_religions": 2, "country": "Kenya", "population": "28176686" }
+{ "num_religions": 3, "country": "Kiribati", "population": "80919" }
+{ "num_religions": 0, "country": "Kosovo", "population": "1804838" }
+{ "num_religions": 1, "country": "Kuwait", "population": "1950047" }
+{ "num_religions": 0, "country": "Kyrgyzstan", "population": "4529648" }
+{ "num_religions": 1, "country": "Laos", "population": "4975772" }
+{ "num_religions": 0, "country": "Latvia", "population": "2468982" }
+{ "num_religions": 2, "country": "Lebanon", "population": "3776317" }
+{ "num_religions": 1, "country": "Lesotho", "population": "1970781" }
+{ "num_religions": 2, "country": "Liberia", "population": "2109789" }
+{ "num_religions": 1, "country": "Libya", "population": "5445436" }
+{ "num_religions": 2, "country": "Liechtenstein", "population": "31122" }
+{ "num_religions": 0, "country": "Lithuania", "population": "3646041" }
+{ "num_religions": 2, "country": "Luxembourg", "population": "415870" }
+{ "num_religions": 3, "country": "Macau", "population": "496837" }
+{ "num_religions": 2, "country": "Macedonia", "population": "2104035" }
+{ "num_religions": 2, "country": "Madagascar", "population": "13670507" }
+{ "num_religions": 3, "country": "Malawi", "population": "9452844" }
+{ "num_religions": 0, "country": "Malaysia", "population": "19962893" }
+{ "num_religions": 1, "country": "Maldives", "population": "270758" }
+{ "num_religions": 2, "country": "Mali", "population": "9653261" }
+{ "num_religions": 1, "country": "Malta", "population": "375576" }
+{ "num_religions": 0, "country": "Man", "population": "73837" }
+{ "num_religions": 1, "country": "Marshall Islands", "population": "58363" }
+{ "num_religions": 2, "country": "Martinique", "population": "399151" }
+{ "num_religions": 1, "country": "Mauritania", "population": "2336048" }
+{ "num_religions": 3, "country": "Mauritius", "population": "1140256" }
+{ "num_religions": 1, "country": "Mayotte", "population": "223765" }
+{ "num_religions": 2, "country": "Mexico", "population": "95772462" }
+{ "num_religions": 2, "country": "Micronesia", "population": "125377" }
+{ "num_religions": 2, "country": "Moldova", "population": "4463847" }
+{ "num_religions": 1, "country": "Monaco", "population": "31719" }
+{ "num_religions": 1, "country": "Mongolia", "population": "2496617" }
+{ "num_religions": 3, "country": "Montenegro", "population": "672180" }
+{ "num_religions": 0, "country": "Montserrat", "population": "5097" }
+{ "num_religions": 3, "country": "Morocco", "population": "29779156" }
+{ "num_religions": 2, "country": "Mozambique", "population": "17877927" }
+{ "num_religions": 3, "country": "Myanmar", "population": "45975625" }
+{ "num_religions": 1, "country": "Namibia", "population": "1677243" }
+{ "num_religions": 1, "country": "Nauru", "population": "10273" }
+{ "num_religions": 3, "country": "Nepal", "population": "22094033" }
+{ "num_religions": 3, "country": "Netherlands", "population": "15568034" }
+{ "num_religions": 0, "country": "Netherlands Antilles", "population": "227049" }
+{ "num_religions": 2, "country": "New Caledonia", "population": "227436" }
+{ "num_religions": 6, "country": "New Zealand", "population": "3547983" }
+{ "num_religions": 2, "country": "Nicaragua", "population": "4272352" }
+{ "num_religions": 1, "country": "Niger", "population": "9113001" }
+{ "num_religions": 2, "country": "Nigeria", "population": "103912489" }
+{ "num_religions": 3, "country": "Niue", "population": "1398" }
+{ "num_religions": 4, "country": "Norfolk Island", "population": "2209" }
+{ "num_religions": 0, "country": "North Korea", "population": "23904124" }
+{ "num_religions": 0, "country": "Northern Mariana Islands", "population": "88662" }
+{ "num_religions": 2, "country": "Norway", "population": "4383807" }
+{ "num_religions": 1, "country": "Oman", "population": "2186548" }
+{ "num_religions": 1, "country": "Pakistan", "population": "129275660" }
+{ "num_religions": 0, "country": "Palau", "population": "16952" }
+{ "num_religions": 2, "country": "Panama", "population": "2655094" }
+{ "num_religions": 6, "country": "Papua New Guinea", "population": "4394537" }
+{ "num_religions": 1, "country": "Paraguay", "population": "5504146" }
+{ "num_religions": 1, "country": "Peru", "population": "24523408" }
+{ "num_religions": 4, "country": "Philippines", "population": "74480848" }
+{ "num_religions": 1, "country": "Pitcairn Islands", "population": "48" }
+{ "num_religions": 1, "country": "Poland", "population": "38642565" }
+{ "num_religions": 2, "country": "Portugal", "population": "9865114" }
+{ "num_religions": 2, "country": "Puerto Rico", "population": "3971020" }
+{ "num_religions": 1, "country": "Qatar", "population": "547761" }
+{ "num_religions": 1, "country": "Reunion", "population": "679198" }
+{ "num_religions": 3, "country": "Romania", "population": "21657162" }
+{ "num_religions": 0, "country": "Russia", "population": "148178487" }
+{ "num_religions": 3, "country": "Rwanda", "population": "6853359" }
+{ "num_religions": 0, "country": "Saint Helena", "population": "7637" }
+{ "num_religions": 0, "country": "Saint Kitts and Nevis", "population": "41369" }
+{ "num_religions": 3, "country": "Saint Lucia", "population": "157862" }
+{ "num_religions": 0, "country": "Saint Martin", "population": "29820" }
+{ "num_religions": 1, "country": "Saint Pierre and Miquelon", "population": "6809" }
+{ "num_religions": 0, "country": "Saint Vincent and the Grenadines", "population": "118344" }
+{ "num_religions": 1, "country": "Samoa", "population": "214384" }
+{ "num_religions": 1, "country": "San Marino", "population": "24521" }
+{ "num_religions": 0, "country": "Sao Tome and Principe", "population": "144128" }
+{ "num_religions": 1, "country": "Saudi Arabia", "population": "19409058" }
+{ "num_religions": 2, "country": "Senegal", "population": "9092749" }
+{ "num_religions": 4, "country": "Serbia", "population": "7379339" }
+{ "num_religions": 2, "country": "Seychelles", "population": "77575" }
+{ "num_religions": 2, "country": "Sierra Leone", "population": "4793121" }
+{ "num_religions": 0, "country": "Singapore", "population": "3396924" }
+{ "num_religions": 3, "country": "Slovakia", "population": "5374362" }
+{ "num_religions": 2, "country": "Slovenia", "population": "1951443" }
+{ "num_religions": 6, "country": "Solomon Islands", "population": "412902" }
+{ "num_religions": 1, "country": "Somalia", "population": "9639151" }
+{ "num_religions": 1, "country": "South Africa", "population": "41743459" }
+{ "num_religions": 4, "country": "South Korea", "population": "45482291" }
+{ "num_religions": 1, "country": "Spain", "population": "39181114" }
+{ "num_religions": 4, "country": "Sri Lanka", "population": "18553074" }
+{ "num_religions": 2, "country": "Sudan", "population": "31547543" }
+{ "num_religions": 4, "country": "Suriname", "population": "436418" }
+{ "num_religions": 0, "country": "Svalbard", "population": "2116" }
+{ "num_religions": 1, "country": "Swaziland", "population": "998730" }
+{ "num_religions": 3, "country": "Sweden", "population": "8900954" }
+{ "num_religions": 2, "country": "Switzerland", "population": "7207060" }
+{ "num_religions": 2, "country": "Syria", "population": "15608648" }
+{ "num_religions": 2, "country": "Taiwan", "population": "21465881" }
+{ "num_religions": 1, "country": "Tajikistan", "population": "5916373" }
+{ "num_religions": 0, "country": "Tanzania", "population": "29058470" }
+{ "num_religions": 4, "country": "Thailand", "population": "58851357" }
+{ "num_religions": 3, "country": "Timor-Leste", "population": "1131612" }
+{ "num_religions": 2, "country": "Togo", "population": "4570530" }
+{ "num_religions": 1, "country": "Tonga", "population": "106466" }
+{ "num_religions": 5, "country": "Trinidad and Tobago", "population": "1272385" }
+{ "num_religions": 3, "country": "Tunisia", "population": "9019687" }
+{ "num_religions": 1, "country": "Turkey", "population": "62484478" }
+{ "num_religions": 2, "country": "Turkmenistan", "population": "4149283" }
+{ "num_religions": 4, "country": "Turks and Caicos Islands", "population": "22942" }
+{ "num_religions": 3, "country": "Tuvalu", "population": "10146" }
+{ "num_religions": 3, "country": "Uganda", "population": "20158176" }
+{ "num_religions": 0, "country": "Ukraine", "population": "50864009" }
+{ "num_religions": 1, "country": "United Arab Emirates", "population": "3057337" }
+{ "num_religions": 0, "country": "United Kingdom", "population": "58489975" }
+{ "num_religions": 3, "country": "United States", "population": "266476278" }
+{ "num_religions": 3, "country": "Uruguay", "population": "3238952" }
+{ "num_religions": 2, "country": "Uzbekistan", "population": "23418381" }
+{ "num_religions": 5, "country": "Vanuatu", "population": "177504" }
+{ "num_religions": 2, "country": "Venezuela", "population": "21983188" }
+{ "num_religions": 0, "country": "Vietnam", "population": "73976973" }
+{ "num_religions": 3, "country": "Virgin Islands", "population": "97120" }
+{ "num_religions": 1, "country": "Wallis and Futuna", "population": "15289" }
+{ "num_religions": 3, "country": "West Bank", "population": "1427741" }
+{ "num_religions": 1, "country": "Western Sahara", "population": "222631" }
+{ "num_religions": 0, "country": "Yemen", "population": "13483178" }
+{ "num_religions": 4, "country": "Zaire", "population": "46498539" }
+{ "num_religions": 2, "country": "Zambia", "population": "9159072" }
+{ "num_religions": 2, "country": "Zimbabwe", "population": "11271314" }
+*/

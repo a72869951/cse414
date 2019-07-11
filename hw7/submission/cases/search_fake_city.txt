@@ -1,0 +1,10 @@
+# user 1
+search "SSS" "BBBB" 0 15 10
+quit
+*
+#
+# expected printouts for user 1
+#
+No flights match your selection
+Goodbye
+*

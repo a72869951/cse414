@@ -1,0 +1,22 @@
+# Trying to cancel the same reservations twice.
+#
+# user 1
+create user1 user1 10000
+login user1 user1
+search "Kahului HI" "Los Angeles CA" 0 1 1
+book 0
+cancel 1
+cancel 1
+quit
+*
+#
+# expected printouts for user 1
+Created user user1
+Logged in as user1
+Itinerary 0: 1 flight(s), 288 minutes
+ID: 280 Day: 1 Carrier: AA Number: 14 Origin: Kahului HI Dest: Los Angeles CA Duration: 288 Capacity: 18 Price: 598
+Booked flight(s), reservation ID: 1
+Canceled reservation 1
+Failed to cancel reservation 1
+Goodbye
+*

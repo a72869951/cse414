@@ -1,0 +1,42 @@
+-- Question 1
+SELECT u.name as city
+FROM hw5.world x, x.mondial.country y, y.province z,
+                   CASE  WHEN z.city is missing THEN []
+                   WHEN is_array(z.city) THEN z.city
+                   ELSE [z.city] END u
+WHERE  y.name='Peru'
+ORDER BY u.name;
+
+/*
+response
+{ "city": "Abancay" }
+{ "city": "Arequipa" }
+{ "city": "Ayacucho" }
+{ "city": "Cajamarca" }
+{ "city": "Callao" }
+{ "city": "Cerro de Pasco" }
+{ "city": "Chachapoyas" }
+{ "city": "Chiclayo" }
+{ "city": "Chimbote" }
+{ "city": "Chincha Alta" }
+{ "city": "Cuzco" }
+{ "city": "Huancavelica" }
+{ "city": "Huancayo" }
+{ "city": "Huanuco" }
+{ "city": "Huaraz" }
+{ "city": "Ica" }
+{ "city": "Iquitos" }
+{ "city": "Juliaca" }
+{ "city": "Lima" }
+{ "city": "Moquegua" }
+{ "city": "Moyobamba" }
+{ "city": "Piura" }
+{ "city": "Pucallpa" }
+{ "city": "Puerto Maldonado" }
+{ "city": "Puno" }
+{ "city": "Sullana" }
+{ "city": "Tacna" }
+{ "city": "Talara" }
+{ "city": "Trujillo" }
+{ "city": "Tumbes" }
+*/

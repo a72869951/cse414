@@ -1,0 +1,32 @@
+# Two terminals attempt to create user1 then book a flight. One of the two
+# terminals will succeed in user creation, both should succeed in logging in.
+# Terminal 1
+create user1 user1 10000
+login user1 user1
+quit
+*
+# Terminal 1 suceeds in user creation
+Created user user1
+Logged in as user1
+Goodbye
+|
+# Terminal 1 fails to create user as Terminal 2 already has
+Failed to create user
+Logged in as user1
+Goodbye
+*
+# Terminal 2
+create user1 user1 10000
+login user1 user1
+quit
+*
+# Terminal 2 suceeds in user creation
+Failed to create user
+Logged in as user1
+Goodbye
+|
+# Terminal 2 fails to create user as Terminal 1 already has
+Created user user1
+Logged in as user1
+Goodbye
+*

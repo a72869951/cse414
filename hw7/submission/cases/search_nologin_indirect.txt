@@ -1,0 +1,12 @@
+# user 1
+search "Niagara Falls NY" "Seattle WA" 0 24 6
+quit
+*
+#
+# expected printouts for user 1
+#
+Itinerary 0: 2 flight(s), 535 minutes
+ID: 920235 Day: 24 Carrier: NK Number: 647 Origin: Niagara Falls NY Dest: Fort Lauderdale FL Duration: 159 Capacity: 7 Price: 188
+ID: 715000 Day: 24 Carrier: AS Number: 35 Origin: Fort Lauderdale FL Dest: Seattle WA Duration: 376 Capacity: 14 Price: 136
+Goodbye
+*

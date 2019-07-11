@@ -1,0 +1,86 @@
+-- Question 7
+
+SELECT   c.`-car_code` as country_code,  c.name as country_name, seas
+FROM hw5.world x,  x.mondial.country c
+LET seas =  (select s.name as sea  FROM x.mondial.sea  s, split(s.`-country`, " ") ss WHERE c.`-car_code` = ss)
+WHERE ARRAY_COUNT(seas) >=2
+ORDER BY ARRAY_COUNT(seas) DESC;
+
+
+/*
+response
+{ "seas": [ { "sea": "Black Sea" }, { "sea": "Sea of Azov" }, { "sea": "Baltic Sea" }, { "sea": "Barents Sea" }, { "sea": "Sibirian Sea" }, { "sea": "Arctic Ocean" }, { "sea": "Bering Sea" }, { "sea": "Pacific Ocean" }, { "sea": "Sea of Okhotsk" }, { "sea": "Sea of Japan" } ], "country_code": "R", "country_name": "Russia" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "South China Sea" }, { "sea": "Indian Ocean" }, { "sea": "Andaman Sea" }, { "sea": "Malakka Strait" }, { "sea": "Sunda Sea" }, { "sea": "Sulawesi Sea" } ], "country_code": "RI", "country_name": "Indonesia" }
+{ "seas": [ { "sea": "North Sea" }, { "sea": "The Channel" }, { "sea": "Atlantic Ocean" }, { "sea": "Norwegian Sea" }, { "sea": "Irish Sea" } ], "country_code": "GB", "country_name": "United Kingdom" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Gulf of Mexico" }, { "sea": "Arctic Ocean" }, { "sea": "Bering Sea" }, { "sea": "Pacific Ocean" } ], "country_code": "USA", "country_name": "United States" }
+{ "seas": [ { "sea": "North Sea" }, { "sea": "The Channel" }, { "sea": "Atlantic Ocean" }, { "sea": "Mediterranean Sea" } ], "country_code": "F", "country_name": "France" }
+{ "seas": [ { "sea": "Skagerrak" }, { "sea": "Kattegat" }, { "sea": "North Sea" }, { "sea": "Baltic Sea" } ], "country_code": "DK", "country_name": "Denmark" }
+{ "seas": [ { "sea": "Skagerrak" }, { "sea": "North Sea" }, { "sea": "Norwegian Sea" }, { "sea": "Barents Sea" } ], "country_code": "N", "country_name": "Norway" }
+{ "seas": [ { "sea": "Indian Ocean" }, { "sea": "Arabian Sea" }, { "sea": "Gulf of Bengal" }, { "sea": "Andaman Sea" } ], "country_code": "IND", "country_name": "India" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Sea of Okhotsk" }, { "sea": "Sea of Japan" }, { "sea": "East China Sea" } ], "country_code": "J", "country_name": "Japan" }
+{ "seas": [ { "sea": "Skagerrak" }, { "sea": "Kattegat" }, { "sea": "Baltic Sea" } ], "country_code": "S", "country_name": "Sweden" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Norwegian Sea" }, { "sea": "Arctic Ocean" } ], "country_code": "SVAX", "country_name": "Svalbard" }
+{ "seas": [ { "sea": "Yellow Sea" }, { "sea": "East China Sea" }, { "sea": "South China Sea" } ], "country_code": "TJ", "country_name": "China" }
+{ "seas": [ { "sea": "Indian Ocean" }, { "sea": "Arabian Sea" }, { "sea": "Gulf of Oman" } ], "country_code": "PK", "country_name": "Pakistan" }
+{ "seas": [ { "sea": "South China Sea" }, { "sea": "Malakka Strait" }, { "sea": "Sulawesi Sea" } ], "country_code": "MAL", "country_name": "Malaysia" }
+{ "seas": [ { "sea": "South China Sea" }, { "sea": "Andaman Sea" }, { "sea": "Malakka Strait" } ], "country_code": "THA", "country_name": "Thailand" }
+{ "seas": [ { "sea": "Sea of Japan" }, { "sea": "Yellow Sea" }, { "sea": "East China Sea" } ], "country_code": "ROK", "country_name": "South Korea" }
+{ "seas": [ { "sea": "Persian Gulf" }, { "sea": "Arabian Sea" }, { "sea": "Gulf of Oman" } ], "country_code": "OM", "country_name": "Oman" }
+{ "seas": [ { "sea": "Indian Ocean" }, { "sea": "Red Sea" }, { "sea": "Gulf of Aden" } ], "country_code": "YE", "country_name": "Yemen" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "South China Sea" }, { "sea": "Sulawesi Sea" } ], "country_code": "RP", "country_name": "Philippines" }
+{ "seas": [ { "sea": "South China Sea" }, { "sea": "Indian Ocean" }, { "sea": "Malakka Strait" } ], "country_code": "SGP", "country_name": "Singapore" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "East China Sea" }, { "sea": "South China Sea" } ], "country_code": "RC", "country_name": "Taiwan" }
+{ "seas": [ { "sea": "Gulf of Mexico" }, { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "MEX", "country_name": "Mexico" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Arctic Ocean" }, { "sea": "Pacific Ocean" } ], "country_code": "CDN", "country_name": "Canada" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Gulf of Mexico" }, { "sea": "Caribbean Sea" } ], "country_code": "C", "country_name": "Cuba" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Norwegian Sea" }, { "sea": "Arctic Ocean" } ], "country_code": "GROX", "country_name": "Greenland" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Mediterranean Sea" } ], "country_code": "E", "country_name": "Spain" }
+{ "seas": [ { "sea": "North Sea" }, { "sea": "Baltic Sea" } ], "country_code": "D", "country_name": "Germany" }
+{ "seas": [ { "sea": "Black Sea" }, { "sea": "Sea of Azov" } ], "country_code": "UA", "country_name": "Ukraine" }
+{ "seas": [ { "sea": "Black Sea" }, { "sea": "Mediterranean Sea" } ], "country_code": "TR", "country_name": "Turkey" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Norwegian Sea" } ], "country_code": "FARX", "country_name": "Faroe Islands" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Mediterranean Sea" } ], "country_code": "GBZ", "country_name": "Gibraltar" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Norwegian Sea" } ], "country_code": "IS", "country_name": "Iceland" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Irish Sea" } ], "country_code": "IRL", "country_name": "Ireland" }
+{ "seas": [ { "sea": "Persian Gulf" }, { "sea": "Gulf of Oman" } ], "country_code": "IR", "country_name": "Iran" }
+{ "seas": [ { "sea": "Gulf of Bengal" }, { "sea": "Andaman Sea" } ], "country_code": "MYA", "country_name": "Myanmar" }
+{ "seas": [ { "sea": "Sea of Japan" }, { "sea": "Yellow Sea" } ], "country_code": "NOK", "country_name": "North Korea" }
+{ "seas": [ { "sea": "Mediterranean Sea" }, { "sea": "Red Sea" } ], "country_code": "IL", "country_name": "Israel" }
+{ "seas": [ { "sea": "Mediterranean Sea" }, { "sea": "Red Sea" } ], "country_code": "ET", "country_name": "Egypt" }
+{ "seas": [ { "sea": "Indian Ocean" }, { "sea": "Sunda Sea" } ], "country_code": "TL", "country_name": "Timor-Leste" }
+{ "seas": [ { "sea": "Persian Gulf" }, { "sea": "Red Sea" } ], "country_code": "SA", "country_name": "Saudi Arabia" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Indian Ocean" } ], "country_code": "MV", "country_name": "Maldives" }
+{ "seas": [ { "sea": "Persian Gulf" }, { "sea": "Gulf of Oman" } ], "country_code": "UAE", "country_name": "United Arab Emirates" }
+{ "seas": [ { "sea": "Indian Ocean" }, { "sea": "Gulf of Bengal" } ], "country_code": "CL", "country_name": "Sri Lanka" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "AXA", "country_name": "Anguilla" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "AG", "country_name": "Antigua and Barbuda" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "GCA", "country_name": "Guatemala" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "BVIR", "country_name": "British Virgin Islands" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "CR", "country_name": "Costa Rica" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "NIC", "country_name": "Nicaragua" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "PA", "country_name": "Panama" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "WD", "country_name": "Dominica" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "DOM", "country_name": "Dominican Republic" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "RH", "country_name": "Haiti" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "HCA", "country_name": "Honduras" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "WG", "country_name": "Grenada" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "GUAD", "country_name": "Guadeloupe" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "MART", "country_name": "Martinique" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "MNTS", "country_name": "Montserrat" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "NA", "country_name": "Netherlands Antilles" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "SMAR", "country_name": "Saint Martin" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "CO", "country_name": "Colombia" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "PR", "country_name": "Puerto Rico" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "KN", "country_name": "Saint Kitts and Nevis" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "WL", "country_name": "Saint Lucia" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "WV", "country_name": "Saint Vincent and the Grenadines" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "TT", "country_name": "Trinidad and Tobago" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "VIRG", "country_name": "Virgin Islands" }
+{ "seas": [ { "sea": "Pacific Ocean" }, { "sea": "Indian Ocean" } ], "country_code": "AUS", "country_name": "Australia" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Pacific Ocean" } ], "country_code": "RCH", "country_name": "Chile" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Caribbean Sea" } ], "country_code": "YV", "country_name": "Venezuela" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Mediterranean Sea" } ], "country_code": "MA", "country_name": "Morocco" }
+{ "seas": [ { "sea": "Atlantic Ocean" }, { "sea": "Indian Ocean" } ], "country_code": "RSA", "country_name": "South Africa" }
+{ "seas": [ { "sea": "Red Sea" }, { "sea": "Gulf of Aden" } ], "country_code": "DJI", "country_name": "Djibouti" }
+{ "seas": [ { "sea": "Indian Ocean" }, { "sea": "Gulf of Aden" } ], "country_code": "SP", "country_name": "Somalia" }
+*/

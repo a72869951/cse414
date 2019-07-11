@@ -1,0 +1,13 @@
+# this case tests for the ability to limit the number of flights returned.
+#
+# user 1
+search "New York NY" "Boston MA" 0 7 1
+quit
+*
+#
+# expected printouts for user 1
+#
+Itinerary 0: 1 flight(s), 51 minutes
+ID: 134752 Day: 7 Carrier: DL Number: 1924 Origin: New York NY Dest: Boston MA Duration: 51 Capacity: 5 Price: 844
+Goodbye
+*

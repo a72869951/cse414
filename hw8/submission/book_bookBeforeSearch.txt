@@ -1,0 +1,14 @@
+# user 1
+create user1 user1 100
+login user1 user1
+book 0
+quit
+*
+#
+# expected printouts for user 1
+#
+Created user user1
+Logged in as user1
+Booking failed
+Goodbye
+*

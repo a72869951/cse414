@@ -1,0 +1,24 @@
+-- Question 11
+
+SELECT DISTINCT c1.name as first_country, c2.name as second_country
+FROM hw5index.country c1, hw5index.country c2,
+     hw5index.sea s, split(s.`-country`, " ") S1, split(s.`-country`, " ") S2,
+     hw5index.mountain m, split(m.`-country`, " ") M1, split(m.`-country`, " ") M2
+WHERE M1 = c1.`-car_code`
+AND M2 = c2.`-car_code` 
+AND S1 = c1.`-car_code` 
+AND S2 = c2.`-car_code`
+AND c1.`-car_code` < c2.`-car_code`;
+
+/*
+new runtime
+0.799 sec
+response
+{ "first_country": "Spain", "second_country": "France" }
+{ "first_country": "France", "second_country": "Italy" }
+{ "first_country": "Canada", "second_country": "United States" }
+{ "first_country": "Norway", "second_country": "Sweden" }
+{ "first_country": "Georgia", "second_country": "Russia" }
+{ "first_country": "Argentina", "second_country": "Chile" }
+{ "first_country": "North Korea", "second_country": "China" }
+*/
